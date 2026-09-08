@@ -1,6 +1,6 @@
 from fastapi import FastAPI, APIRouter,Request,Body
 from fastapi.responses import JSONResponse
-from schemas.user import RegisterSchema
+from schemas.user import RegisterSchema, LoginRequestSchema
 from messages.users import Messages
 
 router = APIRouter()
@@ -13,6 +13,8 @@ def register(request: Request,
 
 
 @router.post("/login")
-def login():
-    return "login"
+def login(request: Request,
+             Body : LoginRequestSchema
+             ):
+    return JSONResponse({"detail": Messages.logedin_successfully})
 

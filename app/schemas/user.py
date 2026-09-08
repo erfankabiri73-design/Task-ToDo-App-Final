@@ -83,3 +83,25 @@ class RegisterSchema(BaseModel):
             }
         }
     }
+
+
+
+class LoginRequestSchema(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=8, examples=["a/@1234567"])
+    
+    model_config = ConfigDict(
+        json_schema_extra={
+            "examples": [
+                {
+                    "email": "user@example.com",
+                    "password": "StrongPass@123",                    
+                }
+            ]
+        }
+    )
+class LoginResponseSchema(BaseModel):
+    user_id: int 
+    email: str 
+    type: str 
+    detail: str 
