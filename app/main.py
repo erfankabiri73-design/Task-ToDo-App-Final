@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 from fastapi import FastAPI, HTTPException
 from fastapi.exceptions import RequestValidationError
 # route import
@@ -17,4 +15,3 @@ app.add_exception_handler(Exception,unhandled_exception_handler)
 
 # include route
 app.include_router(router)
->>>>>>> Stashed changes

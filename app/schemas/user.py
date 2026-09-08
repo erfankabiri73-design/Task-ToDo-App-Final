@@ -1,4 +1,6 @@
-from pydantic import BaseModel, EmailStr, Field, field_validator, model_validator
+from pydantic import BaseModel, EmailStr, Field, field_validator, model_validator, ConfigDict
+from core.exceptions import CustomValidationException
+from messages.users import Messages
 
 
 class RegisterSchema(BaseModel):
@@ -21,10 +23,10 @@ class RegisterSchema(BaseModel):
     @classmethod
     def validate_email(cls, value):
         if len(value) < 5:
-            raise ValueError("Email must be at least 5 characters")
+            raise CustomValidationException("Email must be at least 5 characters")
 
         if len(value) > 254:
-            raise ValueError("Email must not exceed 254 characters")
+            raise CustomValidationException("Email must not exceed 254 characters")
 
         return value
 
@@ -32,25 +34,25 @@ class RegisterSchema(BaseModel):
     @classmethod
     def validate_password(cls, value):
         if len(value) < 8:
-            raise ValueError("Password must be at least 8 characters")
+            raise CustomValidationException("Password must be at least 8 characters")
 
         if len(value) > 64:
-            raise ValueError("Password must not exceed 64 characters")
+            raise CustomValidationException("Password must not exceed 64 characters")
 
         if not any(char.islower() for char in value):
-            raise ValueError("Password must contain at least one lowercase letter")
+            raise CustomValidationException("Password must contain at least one lowercase letter")
 
         if not any(char.isupper() for char in value):
-            raise ValueError("Password must contain at least one uppercase letter")
+            raise CustomValidationException("Password must contain at least one uppercase letter")
 
         if not any(char.isdigit() for char in value):
-            raise ValueError("Password must contain at least one number")
+            raise CustomValidationException("Password must contain at least one number")
 
         if not any(not char.isalnum() for char in value):
-            raise ValueError("Password must contain at least one special character")
+            raise CustomValidationException("Password must contain at least one special character")
 
         if any(char.isspace() for char in value):
-            raise ValueError("Password must not contain spaces")
+            raise CustomValidationException("Password must not contain spaces")
 
         return value
 
@@ -58,16 +60,26 @@ class RegisterSchema(BaseModel):
     @classmethod
     def validate_confirm_password(cls, value):
         if len(value) < 8:
-            raise ValueError("Confirm password must be at least 8 characters")
+            raise CustomValidationException("Confirm password must be at least 8 characters")
 
         if len(value) > 64:
-            raise ValueError("Confirm password must not exceed 64 characters")
+            raise CustomValidationException("Confirm password must not exceed 64 characters")
 
         return value
 
     @model_validator(mode="after")
     def check_passwords(self):
         if self.password != self.confirm_password:
-            raise ValueError("Confirm password does not match password")
+            raise CustomValidationException(Messages.passwords_not_even)
 
         return self
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "email": "john.doe@example.com",
+                "password": "StrongPass123!",
+                "confirm_password": "StrongPass123!"
+            }
+        }
+    }
