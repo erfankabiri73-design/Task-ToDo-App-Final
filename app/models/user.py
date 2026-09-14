@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 from core.database import Base
+=======
+<<<<<<< Updated upstream
+=======
+from  app.core.database  import Base
+>>>>>>> alembic,env,init,databse
 from sqlalchemy import Column,String,Integer,Boolean,DateTime,func
 import enum
 
@@ -14,10 +20,19 @@ class UserModdel(Base):
     email       = Column(String,unique=True,nullable=False)
     password    = Column(String,nullable=False)
     type        = Column(String,default=UserTypes.Developer)
+<<<<<<< HEAD
     is_verified = Column(Boolean,server_default=False)
     is_active   = Column(Boolean,server_default=True)
+=======
+    is_verified = Column(Boolean,server_default="false")
+    is_active   = Column(Boolean,server_default="true")
+>>>>>>> alembic,env,init,databse
     created_date= Column(DateTime(timezone=True),default=func.now())
     updated_date= Column(DateTime(timezone=True),server_default=func.now(),
                                                 server_onupdate=func.now())
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> alembic,env,init,databse
