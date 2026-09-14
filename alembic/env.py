@@ -5,14 +5,7 @@ from sqlalchemy import pool
 from pathlib import Path
 from dotenv import load_dotenv
 from alembic import context
-<<<<<<< HEAD
-import os
-from configparser import ConfigParser, ExtendedInterpolation, BasicInterpolation
-
-
-=======
 from app.core.database import Base 
->>>>>>> alembic,env,init,databse
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -23,16 +16,6 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-<<<<<<< HEAD
-
-=======
-# add your model's MetaData object here
-# for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-from app.models import *
-target_metadata = Base.metadata
->>>>>>> alembic,env,init,databse
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -57,7 +40,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 if config.file_config is not None:
     # Create a new parser with no interpolation
     new_parser = ConfigParser(interpolation=None)
-    #new_parser.read(config.config_file_name)
+    new_parser.read(config.config_file_name)
     config.file_config = new_parser
 
 # Set SQLAlchemy DB URL into Alembic config
