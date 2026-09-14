@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 from logging.config import fileConfig
 from configparser import ConfigParser
 from sqlalchemy import engine_from_config
@@ -54,7 +57,7 @@ else:
 # add your model's MetaData object here
 # for 'autogenerate' support
 
-# target_metadata = Base.metadata
+target_metadata = Base.metadata
 
 
 def run_migrations_offline() -> None:
