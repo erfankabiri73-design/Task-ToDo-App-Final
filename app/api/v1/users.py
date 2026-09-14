@@ -1,5 +1,4 @@
 <<<<<<< HEAD
-from fastapi import FastAPI, APIRouter
 =======
 from fastapi import FastAPI, APIRouter,Request,Body
 from fastapi.responses import JSONResponse
@@ -11,13 +10,7 @@ router = APIRouter()
 
 @router.post("/register")
 <<<<<<< HEAD
-def register():
-    return "register"
 
-
-@router.post("/login")
-def login():
-    return "login"
 =======
 def register(request: Request,
              Body : RegisterSchema

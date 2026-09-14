@@ -8,7 +8,7 @@ from alembic import context
 <<<<<<< HEAD
 import os
 from configparser import ConfigParser, ExtendedInterpolation, BasicInterpolation
-from core.database import Base
+
 
 =======
 from app.core.database import Base 
@@ -57,7 +57,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 if config.file_config is not None:
     # Create a new parser with no interpolation
     new_parser = ConfigParser(interpolation=None)
-    new_parser.read(config.config_file_name)
+    #new_parser.read(config.config_file_name)
     config.file_config = new_parser
 
 # Set SQLAlchemy DB URL into Alembic config
@@ -71,8 +71,7 @@ else:
 # for 'autogenerate' support
 
 # target_metadata = Base.metadata
-from models import *
-target_metadata = Base.metadata
+
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.

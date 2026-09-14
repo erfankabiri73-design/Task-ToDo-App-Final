@@ -8,7 +8,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
 <<<<<<< HEAD
-    DATABASE_URL: str
+
 =======
     DATABASE_URL: str = "sqlite:///./sqlite.db"
 >>>>>>> alembic,env,init,databse
@@ -26,7 +26,7 @@ class Settings(BaseSettings):
 
 # Instantiate settings (values are loaded from env variables automatically)
 <<<<<<< HEAD
-settings = Settings()
+
 =======
 settings = Settings()
 >>>>>>> Stashed changes

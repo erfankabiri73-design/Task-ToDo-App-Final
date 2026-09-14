@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-from core.database import Base
+
 =======
 <<<<<<< Updated upstream
 =======
@@ -21,9 +21,6 @@ class UserModdel(Base):
     password    = Column(String,nullable=False)
     type        = Column(String,default=UserTypes.Developer)
 <<<<<<< HEAD
-    is_verified = Column(Boolean,server_default=False)
-    is_active   = Column(Boolean,server_default=True)
-=======
     is_verified = Column(Boolean,server_default="false")
     is_active   = Column(Boolean,server_default="true")
 >>>>>>> alembic,env,init,databse

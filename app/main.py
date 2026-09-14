@@ -3,7 +3,7 @@ from fastapi.exceptions import RequestValidationError
 # route import
 <<<<<<< HEAD
 from api.v1.users import APIRouter
-from utils.exceptions import (http_exception_handler,
+
 =======
 from api.v1.users import router
 

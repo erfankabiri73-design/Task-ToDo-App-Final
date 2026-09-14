@@ -36,6 +36,6 @@ def get_db():
 <<<<<<< HEAD
         db.close()
 =======
-        db.close()
+       
 >>>>>>> Stashed changes
 >>>>>>> alembic,env,init,databse
