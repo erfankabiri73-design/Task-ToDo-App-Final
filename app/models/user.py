@@ -1,5 +1,5 @@
 
-from  app.core.database  import Base
+from core.database  import Base
 from sqlalchemy import Column,String,Integer,Boolean,DateTime,func
 from passlib.context import CryptContext
 import enum

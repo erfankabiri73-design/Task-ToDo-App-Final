@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timedelta, timezone
 import jwt
 from jwt.exceptions import DecodeError, InvalidSignatureError
-from app.models.user import UserModdel
+from models.user import UserModdel
 from core.database import get_db
 from core.config import settings
 
