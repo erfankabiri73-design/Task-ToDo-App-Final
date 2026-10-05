@@ -23,12 +23,18 @@ def get_account_service(db: Session = Depends(get_db)) -> AccountService:
     user_repo = UserRepository(db)
     return AccountService(user_repo)
 
-
+"""
 @router.post("/register", status_code=status.HTTP_201_CREATED)
 def register(request: RegisterSchema,
              ):
     return JSONResponse({"detail": Messages.registered_successfully})
-
+"""
+@router.post("/register", status_code=status.HTTP_201_CREATED)
+async def register(
+    request: RegisterSchema,
+    service: AccountService = Depends(get_account_service),
+):
+    return service.register(request)
 
 @router.post(
     "/login",
