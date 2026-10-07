@@ -3,9 +3,9 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timedelta, timezone
 import jwt
 from jwt.exceptions import DecodeError, InvalidSignatureError
-from models.user import UserModdel
-from core.database import get_db
-from core.config import settings
+from app.models.user import UserModdel
+from app.core.database import get_db
+from app.core.config import settings
 
 
 def generate_access_token(user_id: int) -> str:

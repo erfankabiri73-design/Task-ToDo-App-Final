@@ -1,18 +1,22 @@
-from fastapi import FastAPI, APIRouter,Request,status,HTTPException,Depends
+from fastapi import FastAPI, APIRouter, Request, status, HTTPException, Depends
 from fastapi.responses import JSONResponse
-from models.user import UserModdel 
+
 from sqlalchemy.orm import Session
-from core.database import get_db
-from core.config import settings
-from schemas.user import (
+
+from app.models.user import UserModdel
+from app.core.database import get_db
+from app.core.config import settings
+
+from app.schemas.user import (
     RegisterSchema,
     LoginRequestSchema,
     LoginResponseSchema,
 )
-from repositories.user_repository import UserRepository
-from services.auth_service import AccountService
-from .auth import get_authenticated_user
-from messages.users import Messages
+
+from app.repositories.user_repository import UserRepository
+from app.services.auth_service import AccountService
+from app.api.v1.auth import get_authenticated_user
+from app.messages.users import Messages
 
 router = APIRouter(    
     tags=["accounts"],

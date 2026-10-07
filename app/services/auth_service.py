@@ -1,14 +1,14 @@
 import secrets
 from fastapi import HTTPException, status
 
-from repositories.user_repository import UserRepository
-from schemas.user import RegisterSchema, LoginRequestSchema
-from api.v1.auth import (
+from app.repositories.user_repository import UserRepository
+from app.schemas.user import RegisterSchema, LoginRequestSchema
+from app.api.v1.auth import (
     generate_access_token,
     generate_refresh_token,
     decode_refresh_token,
 )
-from messages.users import Messages
+from app.messages.users import Messages
 
 
 class AccountService:

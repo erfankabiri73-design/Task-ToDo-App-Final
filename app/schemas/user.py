@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr, Field, field_validator, model_validator, ConfigDict
-from core.exceptions import CustomValidationException
-from messages.users import Messages
+from app.core.exceptions import CustomValidationException
+from app.messages.users import Messages
 
 
 class RegisterSchema(BaseModel):

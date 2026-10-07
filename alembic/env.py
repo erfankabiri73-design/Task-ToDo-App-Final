@@ -10,7 +10,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 from alembic import context
 from app.core.database import Base 
-
+from app.models.user import UserModdel
+from app.models.todo import TodoModel
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
